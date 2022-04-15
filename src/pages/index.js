@@ -10,12 +10,14 @@ import bgPng from '../assets/images/background1.png'
 import profPng from '../assets/images/speech.png'
 import Footer from '../components/Footer'
 import NewsLetter from '../components/NewsLetter'
+import CallModal from '../components/CallModal'
 
 
 const Home = () => {
     
     return (
        <Flex w='100%' direction='column' h='auto'>
+          <CallModal />
             <Flex bgImage={bgPng} backgroundSize={{base:'scale-down', md:'cover'}} w='100%' h={{base:'auto', md:'auto'}} direction='column' bgRepeat='no-repeat'>
                 <Navbar/>
                 <Hero/>
