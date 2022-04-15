@@ -1,12 +1,16 @@
 export const colors = {
-    primary: '#811AFF',
-    secondary: '#A257FF',
-    success: '#82b340',
-    default: 'white',
+    darkgreen: '#1E363F',
+    green: '#1BB66E',
+    red: '#DC3545',
+    blue: '#0889F2',
     white: '#ffffff',
-    black: '#131313',
-    danger: "D52121",
-    muted: "#818181",
-    yellow: "#FFD601"
+    grey: '#5E5E5E',
+    background:'#F3EFE4',
+    disable: '#878EA1',
+    believe:'#4B5264',
+    support:'#828282',
+    disclaimer:'#F7F7F7',
+    divider:'#F3EFE4'
+   
 }
   

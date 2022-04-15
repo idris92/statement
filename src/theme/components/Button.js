@@ -3,10 +3,10 @@ export const Button = {
       action: {
         _hover: {
           color: '#fff',
-          bg: "primary"
+          bg: "green"
         }, 
         color: '#fff',
-        bg: "primary"       
+        bg: "green"       
     },
     }
 }
