@@ -4,23 +4,21 @@ import profPng from '../assets/images/speech.png'
 
 const AboutUs = () => {
     return (
-        <Flex gap={12}>
-             <Flex w='45%'>
-                    <Flex h='870px' w='100%' bgImage={profPng} backgroundSize={'contain'}  bgRepeat="no-repeat" mt='30%'>
+        <Flex gap={{base:1, md:12}} direction={{base:'column', md:'row'}}>
+                <Flex w={{base:'100%', md:'45%'}} >
+                    <Flex h={{base:'420px', md:'870px'}} w='100%' bgImage={profPng} backgroundSize={'contain'}  bgRepeat="no-repeat" mt={{base:'0', md:'30%'}}>
                     
                     </Flex>
                 </Flex>
-                <Flex direction='column' w='55%' gap={2}>
+                <Flex direction='column' w={{base:'100%', md:'55%'}} gap={3}>
                     <Flex direction='column' gap={2}>
-                        <Text fontSize='16px' fontWeight='600' color='green'>Why we’re different</Text>
-                        <Text fontSize='36px' fontWeight='600' color='darkgreen' w='100%'>There's nothing more powerful than the unified voice of the Nigerian people</Text>
-                        <Text fontSize='20px' fontWeight='400' color='darkgreen' w='95%'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper mattis lorem non.</Text>
-                        <Text fontSize='18px' fontWeight='400' color='darkgreen' w='95%'>Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim. Quis at habitant diam at. Suscipit tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat.</Text>
-                    </Flex>
-                    <Flex direction='column' gap={2} py={4}>
-                        <Text fontSize='30px' fontWeight='600' color='darkgreen' >Why we’re better</Text>
-                        <Text fontSize='18px' fontWeight='400' color='darkgreen' w='95%' >Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.</Text>
-                        <Text fontSize='18px' fontWeight='400' color='darkgreen' w='95%'>Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id. Non pellentesque congue eget consectetur turpis. Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt aenean tempus. Quis velit eget ut tortor tellus. Sed vel, congue felis elit erat nam nibh orci.</Text>
+                        <Text fontSize={{base:'14px', md:'16px'}} fontWeight='600' color='green'>Why we’re different</Text>
+                        <Text fontSize={{base:'24px', md:'36px'}} fontWeight='600' color='darkgreen' w='100%'>There's nothing more powerful than the unified voice of the Nigerian people</Text>
+                        <Text fontSize={{base:'18px', md:'20px'}} fontWeight='400' color='darkgreen' w={{base:"100%", md:'95%'}}>And there are several things we agree on Osinbajo:</Text>
+                        <Text fontSize={{base:'18px', md:'20px'}} fontWeight='400' color='darkgreen' w={{base:"100%", md:'95%'}}><Text as='span' fontWeight='700'>- His sheer competence and capacity; </Text> deeply educated, deeply informed, a thinker, a doer, full of energy, works round the clock. You can never mistake him for a joker.</Text>
+                        <Text fontSize={{base:'18px', md:'20px'}} fontWeight='400' color='darkgreen' w={{base:"100%", md:'95%'}}><Text as='span' fontWeight='700'>-	His unquestionable integrity; </Text> he has been tested publicly for decades, hit hard daily from every side. He has never been found wanting. Not once.</Text>
+                        <Text fontSize={{base:'18px', md:'20px'}} fontWeight='400' color='darkgreen' w={{base:"100%", md:'95%'}}><Text as='span' fontWeight='700'>-	His depth of experience; </Text>he knows exactly where things are broken, and what to do form Day-1. Remember when acted as President? The courage, the fearlessness, the speed, the results? There is much more where that came from. We want that, now.</Text>
+                        <Text fontSize={{base:'18px', md:'20px'}} fontWeight='400' color='darkgreen' w={{base:"100%", md:'95%'}}><Text as='span' fontWeight='700'>-	His passion for everyday Nigerians; </Text>his several programmes for entrepreneurs and market women, his obsession with young people and their prospects, his insistence on innovation as the future. He cares, deeply. He looks you in the eye and he means it..</Text>
                     </Flex>
                 </Flex>
         </Flex>
