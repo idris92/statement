@@ -33,7 +33,7 @@ const Donate = () => {
             "transaction_status" :"success",
            "email":email,
            'amount':amount,
-           'currency':currency,
+           'currency':"naira",
            "transaction_ref":reference.reference
         }
         var myHeaders = new Headers();
@@ -43,11 +43,11 @@ const Donate = () => {
         var requestOptions = {
         method: 'POST',
         headers: myHeaders,
-        body: JSON.stringify(payload),
+        body:JSON.stringify(payload),
         redirect: 'follow'
         };
 
-        fetch("http://donation-temp-backend.herokuap.com/api/pay", requestOptions)
+        fetch("https://donation-temp-backend.herokuap.com/api/pay", requestOptions)
         .then(response => response.json())
         .then(response =>{
             console.log('paystack result', response);
