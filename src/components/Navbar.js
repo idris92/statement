@@ -4,7 +4,9 @@ import logoPng from '../assets/images/logo.png'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import DrawerComponent from './DrawerComponent'
 
-const Navbar = () => {
+
+const Navbar = ({click}) => {
+   
     const [open, setOpen] = React.useState(false)
     const handleModal=()=>{
        setOpen(true)
@@ -23,10 +25,10 @@ const Navbar = () => {
                     <Text>About</Text>
                     <Text>Contact</Text>
                 </Flex>
-                <Button variant='action' p={6}>DONATE</Button>
+                <Button variant='action' p={6} onClick={click}>DONATE</Button>
             </Flex>
             <Flex display={{base:'flex', md:'none'}} color='green'>
-                <GiHamburgerMenu onClick={handleModal}/>
+                <GiHamburgerMenu onClick={()=>handleModal('donateSection')}/>
             </Flex>
             <DrawerComponent open={open} close={setOpen}/>
        </Flex>
