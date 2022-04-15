@@ -17,7 +17,7 @@ import { BsCheckCircleFill } from "react-icons/bs";
 import check from "../assets/images/check.png"
 
 
-function SuccessModal({ isOpen, onOpen, onClose }) {
+function SuccessModal({ isOpen, onOpen, onClose, }) {
   return (
     <Modal size="lg" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />

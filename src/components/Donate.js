@@ -1,10 +1,14 @@
 
 import React from 'react'
-import {Flex, Text, Spacer, Select, SimpleGrid, Button, Input, Box, Stack} from '@chakra-ui/react'
+import {Flex, Text, Spacer, Select, SimpleGrid, Button, Input, Box, Stack, useDisclosure} from '@chakra-ui/react'
 import validator from 'validator'
 import { usePaystackPayment } from "react-paystack";
+import SuccessModal from './SuccessModal'
+
 
 const Donate = () => {
+    const { isOpen, onOpen:openModal, onClose:onCloseModal } = useDisclosure();
+    const [success, setSuccess] = React.useState(false);
     const [amount, setAmount] = React.useState(0);
     const [email,setEmail]= React.useState('')
     const [error, setError] = React.useState('')
@@ -28,7 +32,8 @@ const Donate = () => {
 
      });
       const onSuccess =(reference)=>{
-       console.log('reference', reference)
+    //    console.log('reference', reference)
+        setSuccess(true)
         
         let payload = {
             "transaction_status" :"success",
@@ -48,21 +53,16 @@ const Donate = () => {
         redirect: 'follow'
         };
 
-        fetch("https://donation-temp-backend.herokuap.com/api/pay", requestOptions)
+       
+
+        fetch("https://com.itskillscenter.com/api/pay", requestOptions)
         .then(response => response.json())
         .then(response =>{
-            console.log('paystack result', response);
-                // if(response.response){
-                //     // toast.success('payment successfull');
-                //     // setCartTotal(0);
-                //     // setTotal(0);
-                //     // setCart(0);
-                //     // localStorage.removeItem('productsInCart');
-                //     // localStorage.removeItem('Total');
-                //     // navigate('/complete')
-                //     console.log(response)
-                    
+           
+                // if(response.transaction_status==='success'){
+                //     // setSuccess(true);
                 // }
+                openModal()
                 
             }
          )
@@ -83,11 +83,13 @@ const Donate = () => {
 
     const handleDonate=()=>{
         if(amount < 2000 ){
-            if(email == ''){
-                setMailError('Email cannot be empty')
-            }
+          
             setError('The minimum amount is #2000')
-        }else{
+
+        }if (email == '') {
+            setMailError('Email cannot be empty')
+        } 
+        else{
             setError('')
             initializePayment(onSuccess, onClose);
         }
@@ -211,7 +213,7 @@ const Donate = () => {
                    
                    
             </Box>
-           
+            <SuccessModal isOpen={isOpen} onOpen={openModal} onClose={onCloseModal} />
         </Flex>
     )}
 
