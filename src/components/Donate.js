@@ -48,15 +48,50 @@ const Donate = () => {
   "Yobe",
   "Zamfara"
 ]
+
+const price = [
+    {
+    'naira': '₦5000',
+    'dollar' : '$10',
+    'pounds' : '£10',
+    'euro' : '€10'
+},
+  {
+    'naira': '₦10,000',
+    'dollar' : '$20',
+    'pounds' : '£20',
+    'euro' : '€20'
+},
+ {
+    'naira': '₦50,000',
+    'dollar' : '$100',
+    'pounds' : '£100',
+    'euro' : '€100'
+},
+ {
+    'naira': '₦500,000',
+    'dollar' : '$1000',
+    'pounds' : '£1000',
+    'euro' : '€1000'
+},
+ {
+    'naira': '₦1,000,000',
+    'dollar' : '$2000',
+    'pounds' : '£2000',
+    'euro' : '€2000'
+},
+
+
+]
     const { isOpen, onOpen:openModal, onClose:onCloseModal } = useDisclosure();
     const [success, setSuccess] = React.useState(false);
     const [amount, setAmount] = React.useState(0);
     const [email,setEmail]= React.useState('')
     const [error, setError] = React.useState('')
-    const [currency, setCurrency]= React.useState('')
+    const [currency, setCurrency]= React.useState('naira')
     const [mailError, setMailError] = React.useState('')
-    const [country, setCountry] = React.useState('')
-    console.log('selected currency', currency);
+    const [country, setCountry] = React.useState('Nigeria')
+    console.log('amount', amount);
      let references = (new Date()).getTime().toString()
     
     // const [config, setConfig] = React.useState({
@@ -194,23 +229,32 @@ const Donate = () => {
                                     </Text>
                                 </Box>
 
-                                <Select placeholder="Naira" w={{ base: "100%", md: "80%" }} onChange={(e)=>setCurrency(e.target.value)}>
-                                    {/* <option value="naira">Naira</option> */}
-                                    <option value="dollar" selected>US Dollar</option>
-                                    <option value="cedi">Ghanian Cedi</option>
+                                <Select placeholder="" w={{ base: "100%", md: "80%" }} onChange={(e)=>setCurrency(e.target.value)}>
+                                    <option value="naira" selected>Nigerian Naira</option>
+                                    <option value="dollar">US Dollar</option>
+                                    <option value="pounds">Great British Pounds</option>
+                                    <option value="euro">Euros</option>
                                 </Select>
                             </Box>
                     </Stack>
                         <SimpleGrid columns={3} spacing={{base:2, md:4}} py={{base:4, md:8}}>
-                            <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount('5000')}>₦5,000</Button>
+                            {
+                                price.map((pr)=>(
+                                        <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount(pr[currency].slice(1))}>{pr[currency]}</Button>
+                                        
+                                     
+                                ))
+                                
+                            }
+                            {/* <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount('5000')}>₦5,000</Button>
                             <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount('10000')}>₦10,000</Button>
                             <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount('50000')}>₦50,000</Button>
                             <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount('100000')}>₦100,000</Button>
                             <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount('500000')}>₦500,000</Button>
-                            <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount('1000000')}>₦1,000,000</Button>
+                            <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount('1000000')}>₦1,000,000</Button> */}
                         </SimpleGrid>
                         <Flex direction='column' py={2} gap={1}>
-                            <Input type='number' placeholder='₦ Enter Amount' color='darkgreen' fontSize='16px' fontWeight='400'  value={amount!== 0 ? amount:''} onChange={(e)=>{
+                            <Input type='number' placeholder='Enter Amount' color='darkgreen' fontSize='16px' fontWeight='400'  value={amount!== 0 ? amount:''} onChange={(e)=>{
                             const newAmount = e.target.value
                             if(newAmount<= 0 ){
                                 setAmount(e.target.value)
@@ -251,7 +295,9 @@ const Donate = () => {
                                 <Select>
                                 {
                                     countryline.map((line, index)=>(
-                                        <option key={index} value={line.dial_code}>{line.dial_code}</option>
+
+                                         line.dial_code === '+234' ? (<option key={index} value={line.dial_code} selected>{line.dial_code}</option>) :( <option key={index} value={line.dial_code}>{line.dial_code}</option>)
+                                        
                                     ))
                                 }
                                     {/* <option>+234</option>
@@ -266,7 +312,10 @@ const Donate = () => {
                              <Select placeholder="Select Country" w={{ base: "100%", md: "100%" }} onChange={(e)=>setCountry(e.target.value)}>
                              {
                                  countryline.map((country, index)=>(
-                                        <option value={country.name} selected>{country.name}</option>
+                                     
+                                         country.name === 'Nigeria' ? (<option value={country.name} selected>{country.name}</option>) :( <option value={country.name}>{country.name}</option>)
+                                     
+                                        
                                  ))
                              }
                                     
@@ -293,16 +342,19 @@ const Donate = () => {
                          <Flex direction='column' py={2} gap={1} >
                                  <Text as='span' fontSize={{base:'12px', md:'14px'}} fontWeight='400' color='darkgreen'>What’s your age bracket please?</Text>
                                 <Select>
-                                        <option value='18-24'>18-24</option>
-                                        <option value='24-34'>24-34</option>
-                                        <option value='35-44'>35-44</option>
-                                        <option value='45-54'>45-54</option>
-                                        <option value='55 and Above'>55 and Above</option>
+                                        <option value='18-24'>18-25</option>
+                                        <option value='24-34'>26-40</option>
+                                        <option value='35-44'>41-60</option>
+                                        <option value='45-54'>61 and Above</option>
                                 </Select>
                         </Flex>
                         
                                 <Flex py={4} w='100%'>
-                                <Button variant='action' color='white' py={{base: 6, md:8}}  fontSize='18px' fontWeight='500' w='100%' onClick={handleDonate}>DONATE NOW</Button>
+                                {
+                                    currency === 'naira' ? (<Button variant='action' color='white' py={{base: 6, md:8}}  fontSize='18px' fontWeight='500' w='100%' onClick={handleDonate}>DONATE NOW</Button>): 
+                                    (<Button variant='action' color='white' py={{base: 6, md:8}}  fontSize='18px' fontWeight='500' w='100%' >OTHER CURRENCIES ON AVAILABLE</Button>)
+                                }
+                                
                                 </Flex>
                                 <Flex direction='column' py={2} bgColor='#F7F7F7' rounded='10px' px={4}>
                                         <Text color='believe' fontSize='12px' fontWeight='600'>Back it because you believe in it.</Text>
