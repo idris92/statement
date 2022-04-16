@@ -147,6 +147,7 @@ const price = [
                 // if(response.transaction_status==='success'){
                 //     // setSuccess(true);
                 // }
+                //open modal
                 openModal()
                 
             }
