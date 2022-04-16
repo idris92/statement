@@ -6,9 +6,7 @@ const AboutUs = () => {
     return (
         <Flex gap={{base:1, md:12}} direction={{base:'column', md:'row'}}>
                 <Flex w={{base:'100%', md:'45%'}} >
-                    <Flex h={{base:'420px', md:'870px'}} w='100%' bgImage={profPng} backgroundSize={'contain'}  bgRepeat="no-repeat" mt={{base:'0', md:'30%'}}>
-                    
-                    </Flex>
+                    <Flex h={{base:'420px', md:'800px'}} w='100%' bgImage={profPng} backgroundSize={'contain'}  bgRepeat="no-repeat" mt={{base:'0', md:'30%'}}/>
                 </Flex>
                 <Flex direction='column' w={{base:'100%', md:'55%'}} gap={3}>
                     <Flex direction='column' gap={2}>

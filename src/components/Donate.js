@@ -167,19 +167,29 @@ const price = [
     }
 
     const handleDonateModal=()=>{
-         if(amount <= 0){
-          
-            setError('The amount cannot be zero')
-
-        }else if (email == '') {
-            setMailError('Email cannot be empty')
-        } 
-        else{
-            setError('')
+        if(error !== '' || mailError !== ''){
+            return
+        }else if(amount == ''){
+            setError('Amount cannot be empty')
+        }else if(email == ''){
+            setMailError('Email Address cannot be empty')
+        }else{
+             setError('')
             paymentOpen()
-            // initializePayment(onSuccess, onClose);
         }
     }
+        //  if(error !=='' || mailError !== '' || amount=='' || email=='' ){
+          
+        //    return
+
+        
+        // } 
+        // else{
+        //     setError('')
+        //     paymentOpen()
+        //     // initializePayment(onSuccess, onClose);
+        // }
+    
 
 
     const handleDonate=()=>{
@@ -282,7 +292,7 @@ const price = [
                         <Flex direction='column' py={2} gap={1}>
                             <Input type='number' placeholder='Enter Amount' color='darkgreen' fontSize='16px' fontWeight='400'  value={amount!== 0 ? amount:''} onChange={(e)=>{
                             const newAmount = e.target.value
-                            if(newAmount<= 0 ){
+                            if(newAmount<= 0){
                                 setAmount(e.target.value)
                                 
                                 setError('The amount cannot be zero')

@@ -29,8 +29,8 @@ const Footer = () => {
                 </SimpleGrid>
                 <Divider borderColor='disable'/>
                     <Flex direction={{base:'column-reverse', md:'row'}} gap={4} px={{base:'20px', md:'150px'}} py={{base:6, md:12}} bg='darkgreen'>
-                        <Flex TextAlign='center' w={{base:'100%', md:'50%'}}>
-                                <Text fontSize={{base:'14px', md:'18px'}} fontWeight='400' color='disable'>©Osinbajo 2023. All rights reserved.</Text>
+                        <Flex  w={{base:'100%', md:'50%'}}>
+                                <Text boxSize='100%' textAlign='center' fontSize={{base:'14px', md:'18px'}} fontWeight='400' color='disable'>©Osinbajo 2023. All rights reserved.</Text>
                         </Flex>
                         <Spacer/>
                         <Flex gap={12} w={{base:'100%', md:'50%'}} justifyContent='flex-end'>

@@ -30,7 +30,7 @@ const Navbar = ({click, about, home, contact}) => {
             <Flex display={{base:'flex', md:'none'}} color='green'>
                 <GiHamburgerMenu onClick={()=>handleModal('donateSection')}/>
             </Flex>
-            <DrawerComponent open={open} close={setOpen}/>
+            <DrawerComponent open={open} close={setOpen} home={home} about={about} contact={contact} click={click}/>
        </Flex>
     )
 }
