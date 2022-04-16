@@ -51,7 +51,7 @@ const Donate = () => {
 
 const price = [
     {
-    'naira': '₦5000',
+    'naira': '₦5,000',
     'dollar' : '$10',
     'pounds' : '£10',
     'euro' : '€10'
@@ -70,9 +70,9 @@ const price = [
 },
  {
     'naira': '₦500,000',
-    'dollar' : '$1000',
-    'pounds' : '£1000',
-    'euro' : '€1000'
+    'dollar' : '$1,000',
+    'pounds' : '£1,000',
+    'euro' : '€1,000'
 },
  {
     'naira': '₦1,000,000',
@@ -239,8 +239,8 @@ const price = [
                     </Stack>
                         <SimpleGrid columns={3} spacing={{base:2, md:4}} py={{base:4, md:8}}>
                             {
-                                price.map((pr)=>(
-                                        <Button variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount(pr[currency].slice(1))}>{pr[currency]}</Button>
+                                price.map((pr, index)=>(
+                                        <Button key={index} variant='outline' fontSize={{base:'13px', md:'15px'}} fontWeight='500' color='darkgreen' onClick={()=>setAmount(pr[currency].slice(1).replace(/\,/g,''))}>{pr[currency]}</Button>
                                         
                                      
                                 ))
@@ -352,7 +352,7 @@ const price = [
                                 <Flex py={4} w='100%'>
                                 {
                                     currency === 'naira' ? (<Button variant='action' color='white' py={{base: 6, md:8}}  fontSize='18px' fontWeight='500' w='100%' onClick={handleDonate}>DONATE NOW</Button>): 
-                                    (<Button variant='action' color='white' py={{base: 6, md:8}}  fontSize='18px' fontWeight='500' w='100%' >OTHER CURRENCIES ON AVAILABLE</Button>)
+                                    (<Button variant='action' color='white' py={{base: 6, md:8}}  fontSize='18px' fontWeight='500' w='100%' >OTHER CURRENCIES UNAVAILABLE</Button>)
                                 }
                                 
                                 </Flex>
