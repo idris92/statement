@@ -29,7 +29,7 @@ const AboutUs = () => {
                         <Text fontSize={{base:'18px', md:'20px'}} textAlign='justify' fontWeight='400' color='darkgreen' w={{base:"100%", md:'95%'}}><strong>His depth of experience;</strong> he knows exactly where things are broken, and what to do from Day-1. Remember when he acted as President? The courage, the fearlessness, the speed, the results? We need that now.</Text></li>
                         <br/>
                         <li>
-                        <Text textAlign='justify' fontSize={{base:'18px', md:'20px'}} fontWeight='400' color='darkgreen' w={{base:"100%", md:'95%'}}><strong>His passion for everyday Nigerians;</strong> his several programmes for entrepreneurs and market women, his obsession with young people and their prospects, his insistence on innovation as the future. He cares, deeply. He looks you in the eye and he means it.</Text></li>
+                        <Text textAlign='justify' fontSize={{base:'18px', md:'20px'}} fontWeight='400' color='darkgreen' w={{base:"100%", md:'95%'}}><strong>His passion for everyday Nigerian;</strong> his several programmes for entrepreneurs and market women, his obsession with young people and their prospects, his insistence on innovation as the future. He cares, deeply. He looks you in the eye and he means it.</Text></li>
                         </ul>
                     </Flex>
                 </Flex>
