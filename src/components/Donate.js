@@ -95,17 +95,15 @@ const price = [
     const [currency, setCurrency]= React.useState('naira')
     const [mailError, setMailError] = React.useState('')
     const [country, setCountry] = React.useState('Nigeria')
+    const [state, setState] = React.useState('')
+    const [phoneNumber, setPhoneNumber] = React.useState('')
+    const [phoneCode, setPhoneCode] = React.useState('')
+    const [age, setAge] = React.useState('')
     const [pay, setPay] = React.useState('false')
-    console.log('pay', pay);
+    const phone = phoneCode + phoneNumber
+    console.log({state, country,phone, age});
      let references = (new Date()).getTime().toString()
-    
-    // const [config, setConfig] = React.useState({
-    //             reference:references,
-    //             email:'',
-    //             amount:'',
-    //             publicKey: "pk_test_0cf400c602268d06bbba26454b61c1a4f858f698",
-	//  });
-    //  console.log('refernces', config)
+
      const initializePayment= usePaystackPayment ({
         reference:references,
         email:email,
@@ -121,7 +119,11 @@ const price = [
             "transaction_status" :"success",
            "email":email,
            'amount':amount,
-           'currency':"naira",
+           'currency':currency,
+           'phone':phone,
+           'country':country,
+           'state':state,
+           'age':age,
            "transaction_ref":reference.reference
         }
         var myHeaders = new Headers();
@@ -162,9 +164,24 @@ const price = [
         alert('Opps, Payment not completed');
     }
 
+    const handleDonateModal=()=>{
+         if(amount <= 0){
+          
+            setError('The amount cannot be zero')
+
+        }else if (email == '') {
+            setMailError('Email cannot be empty')
+        } 
+        else{
+            setError('')
+            paymentOpen()
+            // initializePayment(onSuccess, onClose);
+        }
+    }
+
 
     const handleDonate=()=>{
-        console.log('donate clicked')
+        // console.log('donate clicked')
         if(amount <= 0){
           
             setError('The amount cannot be zero')
@@ -299,7 +316,7 @@ const price = [
                             <Text as='span' fontSize={{base:'12px', md:'14px'}} fontWeight='400' color='darkgreen'>Phone Number (Optional)</Text>
                             <InputGroup>
                                 <InputLeftAddon children='+234'>
-                                <Select>
+                                <Select onChange={(e)=>setPhoneCode(e.target.value)}>
                                 {
                                     countryline.sort((a,b)=>a-b).map((line, index)=>(
 
@@ -311,7 +328,7 @@ const price = [
                                     <option>+444</option> */}
                                 </Select>
                                 </InputLeftAddon>
-                                <Input type='tel' placeholder='phone number' />
+                                <Input type='tel' placeholder='phone number'  onChange={(e)=>setPhoneNumber(e.target.value)}/>
                             </InputGroup>
                         </Flex>
                         <Flex direction='column' py={2} gap={1} >
@@ -333,10 +350,10 @@ const price = [
                             country === 'Nigeria' && (
                                 <Flex direction='column' py={2} gap={1} >
                                     <Text as='span' fontSize={{base:'12px', md:'14px'}} fontWeight='400' color='darkgreen'>What state do you reside?</Text>
-                             <Select placeholder="Select State" w={{ base: "100%", md: "100%" }}>
+                             <Select placeholder="Select State" w={{ base: "100%", md: "100%" }} onChange={(e)=>setState(e.target.value)}>
                              {
                                  states.map((state, index)=>(
-                                        <option value={state}>{state}</option>
+                                        <option value={state} selected>{state}</option>
                                  ))
                              }
                                     
@@ -348,17 +365,17 @@ const price = [
                          
                          <Flex direction='column' py={2} gap={1} >
                                  <Text as='span' fontSize={{base:'12px', md:'14px'}} fontWeight='400' color='darkgreen'>What’s your age bracket please?</Text>
-                                <Select>
-                                        <option value='18-24'>18-25</option>
-                                        <option value='24-34'>26-40</option>
-                                        <option value='35-44'>41-60</option>
-                                        <option value='45-54'>61 and Above</option>
+                                <Select onChange={(e)=>setAge(e.target.value)}>
+                                        <option value='18-25' selected>18-25</option>
+                                        <option value='26-40'>26-40</option>
+                                        <option value='41-60'>41-60</option>
+                                        <option value='61 and Above'>61 and Above</option>
                                 </Select>
                         </Flex>
                         
                                 <Flex py={4} w='100%'>
                                 {
-                                    currency === 'naira' ? (<Button variant='action' color='white' py={{base: 6, md:8}}  fontSize='18px' fontWeight='500' w='100%' onClick={()=>paymentOpen()}>DONATE NOW</Button>): 
+                                    currency === 'naira' ? (<Button variant='action' color='white' py={{base: 6, md:8}}  fontSize='18px' fontWeight='500' w='100%' onClick={()=>handleDonateModal()}>DONATE NOW</Button>): 
                                     (<Button variant='action' color='white' py={{base: 6, md:8}}  fontSize='18px' fontWeight='500' w='100%' >OTHER CURRENCIES UNAVAILABLE</Button>)
                                 }
                                 
