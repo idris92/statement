@@ -109,6 +109,7 @@ const price = [
         email:email,
         amount:amount * 100,
         publicKey: "pk_live_916d97b91b3daf0a5de0798b57b852806d1443f3",
+        // publicKey:"pk_test_0cf400c602268d06bbba26454b61c1a4f858f698",
 
      });
       const onSuccess =(reference)=>{
