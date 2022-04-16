@@ -15,6 +15,9 @@ import CallModal from '../components/CallModal'
 
 const Home = () => {
      const donateSection = useRef(null)
+     const aboutSection = useRef(null)
+    const homeSection = useRef(null)
+    const contactSection = useRef(null)
      const handleDonateNavigate =(ref)=>{
          if(ref !== null){
             window.scrollTo({
@@ -24,14 +27,39 @@ const Home = () => {
          }
        
      }
+    const handleAboutNavigate =(ref)=>{
+         if(ref !== null){
+            window.scrollTo({
+            top: aboutSection.current.offsetTop,
+            behavior: 'smooth',
+        });
+         }
+     }
+     const handleHomeNavigate =(ref)=>{
+         if(ref !== null){
+            window.scrollTo({
+            top: homeSection.current.offsetTop,
+            behavior: 'smooth',
+        });
+         }
+     }
+     const handleContactNavigate =(ref)=>{
+         if(ref !== null){
+            window.scrollTo({
+            top: contactSection.current.offsetTop,
+            behavior: 'smooth',
+        });
+         }
+     }
+
     return (
        <Flex w='100%' direction='column' h='auto'>
           {/* <CallModal /> */}
-            <Flex bgImage={bgPng} backgroundSize={{base:'scale-down', md:'cover'}} w='100%' h={{base:'auto', md:'auto'}} direction='column' bgRepeat='no-repeat'>
-                <Navbar click={handleDonateNavigate}/>
+            <Flex bgImage={bgPng} backgroundSize={{base:'scale-down', md:'cover'}} w='100%' h={{base:'auto', md:'auto'}} direction='column' bgRepeat='no-repeat' ref={homeSection}>
+                <Navbar click={handleDonateNavigate} about={handleAboutNavigate} home={handleHomeNavigate} contact={handleContactNavigate}/>
                 <Hero click={handleDonateNavigate}/>
             </Flex>
-            <Flex h='auto' bg='white'  px={{base:'20px', md:'150px'}} pt={{base:'15px', md:'60px'}} w='100%' >
+            <Flex h='auto' bg='white'  px={{base:'20px', md:'150px'}} pt={{base:'15px', md:'60px'}} w='100%' ref={aboutSection} >
                <AboutUs/>
             </Flex>
             <Flex bg='background' w='100%' px={{base:'20px', md:'150px'}} py={{base:3, md:12}} ref={donateSection} >
@@ -40,7 +68,7 @@ const Home = () => {
             <Flex bg='white' w='100%' px={{base:'20px', md:'150px'}} py={{base:'15px', md:'120px'}} >
                <Volunteer/>
             </Flex>
-            <Flex bg='background' w='100%'px={{base:'20px', md:'150px'}} py={{base:'10px', md:'80px'}}>
+            <Flex bg='background' w='100%'px={{base:'20px', md:'150px'}} py={{base:'10px', md:'80px'}} ref={contactSection}>
                < NewsLetter />
             </Flex>
             <>

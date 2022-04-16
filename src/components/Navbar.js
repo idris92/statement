@@ -5,7 +5,7 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import DrawerComponent from './DrawerComponent'
 
 
-const Navbar = ({click}) => {
+const Navbar = ({click, about, home, contact}) => {
    
     const [open, setOpen] = React.useState(false)
     const handleModal=()=>{
@@ -21,9 +21,9 @@ const Navbar = ({click}) => {
             <Spacer/>
             <Flex color='white' align='center' fontSize='16px' fontWeight='500' gap={12} display={{base:'none', md:'flex'}}>
                 <Flex gap={8}>
-                    <Text>Home</Text>
-                    <Text>About</Text>
-                    <Text>Contact</Text>
+                    <Text onClick={home} cursor='pointer'>Home</Text>
+                    <Text onClick={about} cursor='pointer'>About</Text>
+                    <Text onClick={contact} cursor='pointer'>Contact</Text>
                 </Flex>
                 <Button variant='action' p={6} onClick={click}>DONATE</Button>
             </Flex>

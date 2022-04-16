@@ -19,8 +19,8 @@ const Footer = () => {
                 </Flex>
                 <Flex direction='column'>
                         <Text fontSize={{base:'14px', md:'16px'}} fontWeight='500' color='disable'>Call us on:</Text>
-                        <Text fontSize={{base:'18px', md:'24px'}}fontWeight='400' color='white'>+234 7054504793</Text>
-                        <Text fontSize={{base:'18px', md:'24px'}} fontWeight='400' color='white'>+234 8012914116</Text>
+                        <Text fontSize={{base:'18px', md:'24px'}}fontWeight='400' color='white'>+234-815-9406-195</Text>
+                        {/* <Text fontSize={{base:'18px', md:'24px'}} fontWeight='400' color='white'>+234 8012914116</Text> */}
                 </Flex>
                 <Flex direction='column'>
                         <Text fontSize={{base:'14px', md:'16px'}} fontWeight='500' color='disable'>Find us:</Text>
